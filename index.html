@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progetto Adone - Welcome</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@600;700;800&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -32,7 +36,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
             padding: 0 2rem;
         }
 
@@ -50,71 +53,92 @@
         nav a {
             color: #000;
             text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 0.8;
         }
 
         main {
             margin-top: 70px;
         }
 
+        /* HERO */
         .hero {
-            background: #FFD700;
-            color: #000;
-            padding: 6rem 2rem;
-            text-align: center;
             min-height: calc(100vh - 70px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+            text-align: center;
         }
 
-        /* Video background */
         .hero-video {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: 1;
         }
 
-        /* Overlay con effetto retino */
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px),
-                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
+            inset: 0;
+            background: rgba(0,0,0,0.4);
             z-index: 2;
-            pointer-events: none;
         }
 
-        /* Contenuto hero */
         .hero-content {
             position: relative;
             z-index: 3;
+            padding: 2rem;
+            max-width: 1000px;
         }
 
-        .hero h1 {
+        /* TITOLO GLITCH STATICO */
+        .glitch {
+            font-family: 'Bai Jamjuree', sans-serif;
+            font-weight: 800;
             font-size: 3rem;
-            margin-bottom: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            margin-bottom: 1.5rem;
         }
 
+        .glitch span {
+            display: block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            pointer-events: none;
+        }
+
+        .glitch::before {
+            top: 2px;
+            left: -2px;
+            color: #000;
+            opacity: 0.6;
+        }
+
+        .glitch::after {
+            top: -2px;
+            left: 2px;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        /* SOTTOTITOLO */
         .hero p {
+            color: #fff;
+            font-weight: 700;
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
         }
 
         .cta-button {
@@ -125,190 +149,55 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 4rem 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card h3 {
-            color: #FFD700;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
+            .glitch {
                 font-size: 2rem;
             }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            nav {
-                padding: 0 1rem;
-            }
         }
-
-        .glitch {
-    position: relative;
-    color: #fff;
-    font-size: 3rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    color: #fff;
-    background: transparent;
-}
-
-.glitch::before {
-    top: -2px;
-    text-shadow: -2px 0 red;
-    animation: glitch-top 20s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-    top: 2px;
-    text-shadow: -2px 0 cyan;
-    animation: glitch-bottom 15s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-top {
-    0% { clip-path: inset(0 0 90% 0); }
-    20% { clip-path: inset(0 0 10% 0); }
-    40% { clip-path: inset(0 0 60% 0); }
-    60% { clip-path: inset(0 0 30% 0); }
-    80% { clip-path: inset(0 0 80% 0); }
-    100% { clip-path: inset(0 0 20% 0); }
-}
-
-@keyframes glitch-bottom {
-    0% { clip-path: inset(80% 0 0 0); }
-    20% { clip-path: inset(10% 0 0 0); }
-    40% { clip-path: inset(50% 0 0 0); }
-    60% { clip-path: inset(30% 0 0 0); }
-    80% { clip-path: inset(70% 0 0 0); }
-    100% { clip-path: inset(20% 0 0 0); }
-}
     </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="logo">Progetto Adone</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <div class="logo">Progetto Adone</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <section class="hero" id="home">
-            <!-- Video di sfondo -->
-            <video class="hero-video" autoplay muted loop>
-                    <source src="assets/Untitled video - Made with Clipchamp (1).mp4" type="video/mp4">
-            </video>
-            
-            <!-- Overlay con effetto retino -->
-            <div class="hero-overlay"></div>
-            
-            <!-- Contenuto -->
-            <div class="hero-content">
-                <h1 class="glitch"
-                    data-text="ADOne: the future of
-                    Professional Service Humanoid Robots">
-                    ADOne: the future of
-                    Professional Service Humanoid Robots
-                </h1>
-                <p>Explore the experience of working safely and easily with ADOne</p>
-                <a href="#features" class="cta-button">Get Started</a>
-            </div>
-        </section>
+<main>
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop>
+            <source src="assets/Untitled video - Made with Clipchamp (1).mp4" type="video/mp4">
+        </video>
 
-        <section id="features">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem;">Features</h2>
-                <div class="features">
-                    <div class="feature-card">
-                        <h3>Fast & Reliable</h3>
-                        <p>Experience lightning-fast performance with our optimized infrastructure.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>User Friendly</h3>
-                        <p>Intuitive interface designed for users of all skill levels.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Secure</h3>
-                        <p>Your data is protected with industry-standard security measures.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="hero-overlay"></div>
 
-        <section id="about" style="background: #f9f9f9; padding: 4rem 2rem;">
-            <div class="container">
-                <h2 style="margin-bottom: 1rem;">About Us</h2>
-                <p>Progetto Adone is dedicated to delivering exceptional web experiences. We combine cutting-edge technology with thoughtful design to create solutions that matter.</p>
-            </div>
-        </section>
-    </main>
+        <div class="hero-content">
+            <h1 class="glitch"
+                data-text="ADOne The Future of Professional Service Humanoid Robots">
+                <span>ADOne</span>
+                <span>The Future of</span>
+                <span>Professional Service Humanoid Robots</span>
+            </h1>
 
-    <footer id="contact">
-        <p>&copy; 2026 Progetto Adone. All rights reserved.</p>
-        <p>Email: info@progettoadone.com</p>
-        <p>Follow us on social media for updates and news.</p>
-    </footer>
+            <p>Explore the experience of working safely and easily with ADOne</p>
+
+            <a href="#features" class="cta-button">Get Started</a>
+        </div>
+    </section>
+</main>
+
+<footer id="contact">
+    <p>&copy; 2026 Progetto Adone. All rights reserved.</p>
+</footer>
 </body>
 </html>
+
