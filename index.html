@@ -66,7 +66,7 @@
             color: #000;
             padding: 6rem 2rem;
             text-align: center;
-            min-height: 500px;
+            min-height: calc(100vh - 70px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -189,6 +189,56 @@
                 padding: 0 1rem;
             }
         }
+
+        .glitch {
+    position: relative;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #fff;
+    background: transparent;
+}
+
+.glitch::before {
+    top: -2px;
+    text-shadow: -2px 0 red;
+    animation: glitch-top 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    top: 2px;
+    text-shadow: -2px 0 cyan;
+    animation: glitch-bottom 1.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-top {
+    0% { clip-path: inset(0 0 90% 0); }
+    20% { clip-path: inset(0 0 10% 0); }
+    40% { clip-path: inset(0 0 60% 0); }
+    60% { clip-path: inset(0 0 30% 0); }
+    80% { clip-path: inset(0 0 80% 0); }
+    100% { clip-path: inset(0 0 20% 0); }
+}
+
+@keyframes glitch-bottom {
+    0% { clip-path: inset(80% 0 0 0); }
+    20% { clip-path: inset(10% 0 0 0); }
+    40% { clip-path: inset(50% 0 0 0); }
+    60% { clip-path: inset(30% 0 0 0); }
+    80% { clip-path: inset(70% 0 0 0); }
+    100% { clip-path: inset(20% 0 0 0); }
+}
     </style>
 </head>
 <body>
@@ -215,7 +265,7 @@
             <div class="hero-overlay"></div>
             
             <!-- Contenuto -->
-            <div class="hero-content">
+            <div class="glitch">
                 <h1>ADOne: the future of Professional Service Humanoid Robots</h1>
                 <p>Explore the experience of working safely and easily with ADOne</p>
                 <a href="#features" class="cta-button">Get Started</a>
